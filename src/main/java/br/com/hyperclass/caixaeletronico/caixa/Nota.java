@@ -1,4 +1,4 @@
-package br.com.hyperclass.caixaeletronico;
+package br.com.hyperclass.caixaeletronico.caixa;
 
 public final class Nota {
 	

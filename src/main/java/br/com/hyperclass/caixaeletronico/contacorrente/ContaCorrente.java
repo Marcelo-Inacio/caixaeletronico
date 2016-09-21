@@ -1,15 +1,15 @@
-package br.com.hyperclass.caixaeletronico;
+package br.com.hyperclass.caixaeletronico.contacorrente;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import br.com.hyperclass.caixaeletronico.eventos.EventoTransacional;
-import br.com.hyperclass.caixaeletronico.eventos.ValorDepositadoEvento;
-import br.com.hyperclass.caixaeletronico.eventos.ValorInicialDisponibilizadoEvento;
-import br.com.hyperclass.caixaeletronico.eventos.ValorSacadoEvento;
-import br.com.hyperclass.caixaeletronico.eventos.ValorTransferenciaEntrada;
-import br.com.hyperclass.caixaeletronico.eventos.ValorTransferenciaSaida;
+import br.com.hyperclass.caixaeletronico.contacorrente.eventos.EventoTransacional;
+import br.com.hyperclass.caixaeletronico.contacorrente.eventos.ValorDepositadoEvento;
+import br.com.hyperclass.caixaeletronico.contacorrente.eventos.ValorInicialDisponibilizadoEvento;
+import br.com.hyperclass.caixaeletronico.contacorrente.eventos.ValorSacadoEvento;
+import br.com.hyperclass.caixaeletronico.contacorrente.eventos.ValorTransferenciaEntrada;
+import br.com.hyperclass.caixaeletronico.contacorrente.eventos.ValorTransferenciaSaida;
 import br.com.hyperclass.caixaeletronico.excecoes.SaldoInsuficienteException;
 
 

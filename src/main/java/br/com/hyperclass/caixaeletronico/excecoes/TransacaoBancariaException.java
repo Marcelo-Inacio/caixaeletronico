@@ -1,13 +1,13 @@
 package br.com.hyperclass.caixaeletronico.excecoes;
 
-public abstract class CaixaEletronicoException extends RuntimeException {
+public abstract class TransacaoBancariaException extends Exception {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	CaixaEletronicoException(final String mensagem) {
+	TransacaoBancariaException(final String mensagem) {
 		super(mensagem);
 	}
 	

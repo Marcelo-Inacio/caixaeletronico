@@ -1,4 +1,4 @@
-package br.com.hyperclass.caixaeletronico.eventos;
+package br.com.hyperclass.caixaeletronico.contacorrente.eventos;
 
 import java.util.Date;
 

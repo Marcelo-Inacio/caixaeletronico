@@ -1,6 +1,6 @@
 package br.com.hyperclass.caixaeletronico.excecoes;
 
-public class NotasIndisponiveisException extends CaixaEletronicoException {
+public class NotasIndisponiveisException extends TransacaoBancariaException {
 
 	/**
 	 * 

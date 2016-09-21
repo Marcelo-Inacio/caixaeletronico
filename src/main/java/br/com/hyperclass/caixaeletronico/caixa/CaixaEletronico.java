@@ -4,7 +4,7 @@
  * 
  * last update: 21/09/2016
  * */
-package br.com.hyperclass.caixaeletronico;
+package br.com.hyperclass.caixaeletronico.caixa;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import br.com.hyperclass.caixaeletronico.contacorrente.ContaCorrente;
 import br.com.hyperclass.caixaeletronico.excecoes.ContaInvalidaException;
 import br.com.hyperclass.caixaeletronico.excecoes.DepositoException;
 import br.com.hyperclass.caixaeletronico.excecoes.NotasIndisponiveisException;
@@ -43,12 +44,11 @@ public class CaixaEletronico {
 	}
 	
 	public void sacar(final Double valor) {
-		if (verificarNotas(valor)) {
-			clienteLogado.debitar(valor);
-			removerNotas(valor);
-		} else {
+		if (!verificarNotas(valor)) {
 			throw new NotasIndisponiveisException();
-		}
+		}		
+		clienteLogado.debitar(valor);
+		removerNotas(valor);
 	}
 		
 	public void depositar(final String numeroConta, final Double valor) {

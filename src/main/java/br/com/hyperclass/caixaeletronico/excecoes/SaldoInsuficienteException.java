@@ -1,6 +1,6 @@
 package br.com.hyperclass.caixaeletronico.excecoes;
 
-public class SaldoInsuficienteException extends CaixaEletronicoException {
+public class SaldoInsuficienteException extends TransacaoBancariaException {
 
 	/**
 	 * 
