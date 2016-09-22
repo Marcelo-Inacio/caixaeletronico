@@ -11,6 +11,7 @@ import br.com.hyperclass.caixaeletronico.contacorrente.eventos.ValorSacadoEvento
 import br.com.hyperclass.caixaeletronico.contacorrente.eventos.ValorTransferenciaEntrada;
 import br.com.hyperclass.caixaeletronico.contacorrente.eventos.ValorTransferenciaSaida;
 import br.com.hyperclass.caixaeletronico.excecoes.SaldoInsuficienteException;
+import br.com.hyperclass.caixaeletronico.excecoes.TransacaoBancariaException;
 
 
 public class ContaCorrente {
@@ -50,14 +51,14 @@ public class ContaCorrente {
 		historico.add(new ValorDepositadoEvento(valor));
 	}
 	
-	public void debitar(final Double valor) {
+	public void debitar(final Double valor) throws TransacaoBancariaException {
 		if(!haSaldo(valor)) {
 			throw new SaldoInsuficienteException();
 		}
 		historico.add(new ValorSacadoEvento(valor));
 	}
 	
-	public void transferirPara(final ContaCorrente contaDestino, final Double valor) {
+	public void transferirPara(final ContaCorrente contaDestino, final Double valor) throws TransacaoBancariaException {
 		if(!haSaldo(valor)) {
 			throw new SaldoInsuficienteException();
 		}

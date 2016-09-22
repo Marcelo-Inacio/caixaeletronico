@@ -1,6 +1,6 @@
 /**
  * Date: 09/08/2016
- * Developed by: Inácio.
+ * Developed by: Inï¿½cio.
  * 
  * last update: 21/09/2016
  * */
@@ -17,8 +17,8 @@ import br.com.hyperclass.caixaeletronico.contacorrente.ContaCorrente;
 import br.com.hyperclass.caixaeletronico.excecoes.ContaInvalidaException;
 import br.com.hyperclass.caixaeletronico.excecoes.DepositoException;
 import br.com.hyperclass.caixaeletronico.excecoes.NotasIndisponiveisException;
+import br.com.hyperclass.caixaeletronico.excecoes.TransacaoBancariaException;
 import br.com.hyperclass.caixaeletronico.excecoes.TransferenciaException;
-
 
 
 public class CaixaEletronico {
@@ -28,7 +28,7 @@ public class CaixaEletronico {
 	private ContaCorrente clienteLogado;
 	
 	/**
-	 * inicializa o caixa eletrônico definindo quantidade de dinheiro inicial e as contas dos clientes
+	 * inicializa o caixa eletronico definindo quantidade de dinheiro inicial e as contas dos clientes
 	 * 
 	 * @param quantidadeDinheiro
 	 * @param correntistas
@@ -43,7 +43,7 @@ public class CaixaEletronico {
 		return clienteLogado.saldo();
 	}
 	
-	public void sacar(final Double valor) {
+	public void sacar(final Double valor) throws TransacaoBancariaException {
 		if (!verificarNotas(valor)) {
 			throw new NotasIndisponiveisException();
 		}		
@@ -51,21 +51,21 @@ public class CaixaEletronico {
 		removerNotas(valor);
 	}
 		
-	public void depositar(final String numeroConta, final Double valor) {
+	public void depositar(final String numeroConta, final Double valor)  throws TransacaoBancariaException{
 		if (!validarConta(numeroConta)){
 			throw new DepositoException();
 		}
 		contasClientes.get(numeroConta).creditar(valor);
 	}
 	
-	public void transferir(final String numeroContaDestino, final Double valor) {
+	public void transferir(final String numeroContaDestino, final Double valor)  throws TransacaoBancariaException{
 		if (!validarConta(numeroContaDestino)) {
 			throw new TransferenciaException();
 		}
 		clienteLogado.transferirPara(contasClientes.get(numeroContaDestino), valor);
 	}
 	
-	public void entrar(final String numeroConta) {
+	public void entrar(final String numeroConta)  throws TransacaoBancariaException{
 		if (!validarConta(numeroConta)) {
 			throw new ContaInvalidaException();
 		}
@@ -81,7 +81,7 @@ public class CaixaEletronico {
 	}
 	
 	/**
-	 * realiza uma varredura nas notas do caixa e retorna a lista de notas disponíveis
+	 * realiza uma varredura nas notas do caixa e retorna a lista de notas disponï¿½veis
 	 * 
 	 * @return
 	 */
@@ -98,7 +98,7 @@ public class CaixaEletronico {
 	}
 	
 	/**
-	 * algoritimo que realiza um mapeamento(uma carga) das notas no caixa eletrônico para demais operações
+	 * algoritimo que realiza um mapeamento(uma carga) das notas no caixa eletrï¿½nico para demais operaï¿½ï¿½es
 	 *  
 	 * @param valor
 	 */
@@ -119,8 +119,8 @@ public class CaixaEletronico {
 	}
 	
 	/**
-	 * Auxilia método sacar, removendo as notas do caixa após realizar
-	 * a verificação com método <code>verificarNotas()</code>
+	 * Auxilia mï¿½todo sacar, removendo as notas do caixa apï¿½s realizar
+	 * a verificaï¿½ï¿½o com mï¿½todo <code>verificarNotas()</code>
 	 * @param valorSacar
 	 */
 	private void removerNotas(final Double valorSacar) {
@@ -136,9 +136,9 @@ public class CaixaEletronico {
 	}
 	
 	/**
-	 * Algoritmo que verica se há notas disponíveis no caixa eletrônico recebendo um valor a ser removido
-	 * como parâmetro.
-	 * Auxilia método sacar. 
+	 * Algoritmo que verica se hï¿½ notas disponï¿½veis no caixa eletrï¿½nico recebendo um valor a ser removido
+	 * como parï¿½metro.
+	 * Auxilia mï¿½todo sacar. 
 	 * @param valor
 	 * @return
 	 */
@@ -177,7 +177,7 @@ public class CaixaEletronico {
 	
 	/**
 	 * realiza mapeamento das notas existentes no mercado atual
-	 * através do ENUM <class>ValorNota</class>
+	 * atravï¿½s do ENUM <class>ValorNota</class>
 	 */
 	private void mapearNotas() {
 		for (ValorNota valorDaNota : ValorNota.values()) {
