@@ -14,6 +14,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import br.com.hyperclass.caixaeletronico.contacorrente.ContaCorrente;
+import br.com.hyperclass.caixaeletronico.contacorrente.eventos.EventoTransacional;
 import br.com.hyperclass.caixaeletronico.excecoes.ContaInvalidaException;
 import br.com.hyperclass.caixaeletronico.excecoes.DepositoException;
 import br.com.hyperclass.caixaeletronico.excecoes.NotasIndisponiveisException;
@@ -63,6 +64,10 @@ public class CaixaEletronico {
 			throw new TransferenciaException();
 		}
 		clienteLogado.transferirPara(contasClientes.get(numeroContaDestino), valor);
+	}
+	
+	public List<EventoTransacional> extrato() {
+		return clienteLogado.extrato();
 	}
 	
 	public void entrar(final String numeroConta)  throws TransacaoBancariaException{

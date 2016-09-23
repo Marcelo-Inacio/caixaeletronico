@@ -19,6 +19,7 @@ import org.springframework.web.accept.ContentNegotiationManagerFactoryBean;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
@@ -86,6 +87,14 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     public void addArgumentResolvers(final List<HandlerMethodArgumentResolver> argumentResolvers) {
         argumentResolvers.add(pageableResolver());
         super.addArgumentResolvers(argumentResolvers);
+    }
+    
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+    	registry.addMapping("/**")
+    	.allowedOrigins("*")
+    	.allowedMethods("GET")
+    	.allowCredentials(false).maxAge(3600);
     }
 
 }
