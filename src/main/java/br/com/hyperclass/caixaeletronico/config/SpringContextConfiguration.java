@@ -2,6 +2,7 @@ package br.com.hyperclass.caixaeletronico.config;
 
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 //import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -16,7 +17,7 @@ import org.springframework.web.client.RestTemplate;
  * 
  */
 @Configuration
-//@ComponentScan(basePackages = {"",""})
+@ComponentScan(basePackages = {"br.com.hyperclass.caixaeletronico.restapi.serializer",""})
 //@PropertySource({""})
 @Import({DomainEventsBeans.class})
 public class SpringContextConfiguration {

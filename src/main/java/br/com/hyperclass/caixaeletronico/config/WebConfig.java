@@ -1,7 +1,6 @@
 package br.com.hyperclass.caixaeletronico.config;
 
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +8,6 @@ import java.util.Map;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-//import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
@@ -17,23 +15,25 @@ import org.springframework.http.MediaType;
 import org.springframework.web.accept.ContentNegotiationManager;
 import org.springframework.web.accept.ContentNegotiationManagerFactoryBean;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
+import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
 
 /**
- * A classe <code>WebConfig</code> cont√©m as configura√ß√µes do Spring referentes
- * √† camada de apresenta√ß√£o.
+ * A classe <code>WebConfig</code> contÍm as configuraÁıes do Spring referentes
+ * a camada de apresentaÁ„o.
  *
  * 
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"br.com.hyperclass.caixaeletronico.restapi"}) //aqui fica onde est√£o os controllers
-//@PropertySource({"", ""})  //aqui fica onde est√£o localizados os .properties
+@ComponentScan(basePackages = {"br.com.hyperclass.caixaeletronico.restapi"}) //aqui fica onde est„o os controllers
+//@PropertySource({"", ""})  //aqui fica onde est„o localizados os .properties
 public class WebConfig extends WebMvcConfigurerAdapter {
 	
 	@Override
@@ -65,7 +65,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
         final ContentNegotiatingViewResolver contentViewResolver = new ContentNegotiatingViewResolver();
         contentViewResolver.setContentNegotiationManager(contentNegotiationManager.getObject());
-        //contentViewResolver.setDefaultViews(Arrays.<View> asList(defaultJsonView, new MappingJackson2XmlView()));
+        contentViewResolver.setDefaultViews(Arrays.<View> asList(defaultJsonView, new MappingJackson2JsonView()));
 
         return contentViewResolver;
     }
@@ -91,10 +91,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-    	registry.addMapping("/**")
+    	registry.addMapping("/*")
+    	//.allowCredentials(true)
     	.allowedOrigins("*")
     	.allowedMethods("GET")
-    	.allowCredentials(false).maxAge(3600);
+    	.allowCredentials(true).maxAge(3600);
     }
 
 }

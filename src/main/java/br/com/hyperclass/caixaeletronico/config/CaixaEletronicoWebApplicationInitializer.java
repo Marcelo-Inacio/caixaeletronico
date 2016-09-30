@@ -10,10 +10,9 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
- * A classe <code>CMSWebApplicationInitializer</code> representa a inicializaÃ§Ã£o
- * do contexto do Spring na aplicaÃ§Ã£o.
+ * A classe <code>CaixaEletronicoWebApplicationInitializer</code> representa a inicialização
+ * do contexto do Spring na aplicação.
  *
- * 
  */
 public class CaixaEletronicoWebApplicationInitializer extends AbstractAnnotationConfigDispatcherServletInitializer
 		implements WebApplicationInitializer {
@@ -33,7 +32,7 @@ public class CaixaEletronicoWebApplicationInitializer extends AbstractAnnotation
 	/** {@inheritDoc} */
 	@Override
 	protected String[] getServletMappings() {
-		return new String[] {"/"};
+		return new String[] {"/*"};
 	}
 	
 	/** {@inheritDoc} */
