@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
@@ -32,10 +33,10 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = {"br.com.hyperclass.caixaeletronico.restapi"}) //aqui fica onde estão os controllers
-//@PropertySource({"", ""})  //aqui fica onde estão localizados os .properties
+@ComponentScan(basePackages = {"br.com.hyperclass.caixaeletronico.restapi", "br.com.hyperclass.caixaeletronico.restapi.serializer"})
+@Import(SerializersConfig.class)
 public class WebConfig extends WebMvcConfigurerAdapter {
-	
+
 	@Override
     public void configureContentNegotiation(final ContentNegotiationConfigurer configurer) {
         configurer.defaultContentType(MediaType.APPLICATION_JSON);

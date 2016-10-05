@@ -35,7 +35,7 @@ import br.com.hyperclass.caixaeletronico.restapi.wrapper.ValorWrapper;
 public class CaixaEletronicoController {
 	
 	@Autowired
-	@Qualifier("caixaEletronico")
+	@Qualifier("caixaEletronicoTest")
 	private CaixaEletronico caixaEletronico;
 
 	@RequestMapping(value = "/{conta}/saque", method = RequestMethod.POST)
