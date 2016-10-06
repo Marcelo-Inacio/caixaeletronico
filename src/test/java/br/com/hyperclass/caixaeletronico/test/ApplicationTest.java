@@ -67,10 +67,10 @@ public class ApplicationTest {
 		cc.sacar(150);
 		
 		final List<EventoTransacional> eventosValidar = new ArrayList<>();
+		eventosValidar.add(new ValorInicialDisponibilizadoEvento(0.0));
 		eventosValidar.add(new ValorDepositadoEvento(150));
 		eventosValidar.add(new ValorDepositadoEvento(50));
 		eventosValidar.add(new ValorSacadoEvento(150));
-		eventosValidar.add(new ValorInicialDisponibilizadoEvento(0.0));
 		
 		final ObjectMapper objectMapper = new ObjectMapper();
 		final String jsonEsperado = objectMapper.writeValueAsString(new ExtratoWrapper(eventosValidar));
@@ -78,7 +78,7 @@ public class ApplicationTest {
 		final MvcResult result = mockMvc.perform(get("/12345-0/extrato")).andReturn();
 		final String jsonAtual = result.getResponse().getContentAsString();
 		
-		JSONAssert.assertEquals(jsonEsperado, jsonAtual, new EventoComparator());
+		JSONAssert.assertEquals(jsonEsperado, jsonAtual, new EventoComparator("data"));
 		
 		
 	}
@@ -95,7 +95,7 @@ public class ApplicationTest {
 		final String jsonHttp = result.getResponse().getContentAsString();
 		
 		final ObjectMapper objectMapper = new ObjectMapper();
-		final String jsonSaldo = objectMapper.writeValueAsString(new ValorWrapper(cc.saldo()));
+		final String jsonSaldo = objectMapper.writeValueAsString(new ValorWrapper(150));
 		
 		JSONAssert.assertEquals(jsonHttp, jsonSaldo, true);
 	}
