@@ -18,11 +18,11 @@ import br.com.hyperclass.caixaeletronico.restapi.wrapper.NotasDisponiveisWrapper
 public class NotasDisponiveisSerializer extends JsonSerializer<NotasDisponiveisWrapper> {
 
 	@Override
-	public void serialize(NotasDisponiveisWrapper notasDisponiveisWrapper, JsonGenerator generator, SerializerProvider arg2)
+	public void serialize(final NotasDisponiveisWrapper notasDisponiveisWrapper, final JsonGenerator generator, final SerializerProvider arg2)
 			throws IOException {
 		
 		generator.writeStartArray();
-		for(ValorNota nota : notasDisponiveis(notasDisponiveisWrapper.getNotas())) {
+		for(final ValorNota nota : notasDisponiveis(notasDisponiveisWrapper.getNotas())) {
 			generator.writeStartObject();
 			generator.writeNumberField(nota.name(), nota.valor());
 			generator.writeEndObject();
@@ -32,10 +32,10 @@ public class NotasDisponiveisSerializer extends JsonSerializer<NotasDisponiveisW
 	}
 	
 	private List<ValorNota> notasDisponiveis(final Map<ValorNota, List<Nota>> notasMapa) {
-		List<ValorNota> listaNotas = new ArrayList<>();
-		for (Entry<ValorNota, List<Nota>> entry : notasMapa.entrySet()) {
-	    	ValorNota nota = entry.getKey();
-	    	List<Nota> lista = entry.getValue();
+		final List<ValorNota> listaNotas = new ArrayList<>();
+		for (final Entry<ValorNota, List<Nota>> entry : notasMapa.entrySet()) {
+	    	final ValorNota nota = entry.getKey();
+	    	final List<Nota> lista = entry.getValue();
 	    	if(!lista.isEmpty()){
 	    		listaNotas.add(nota);
 	    	}

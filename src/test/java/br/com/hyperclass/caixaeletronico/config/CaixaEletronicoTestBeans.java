@@ -20,7 +20,8 @@ public class CaixaEletronicoTestBeans extends AbstractCaixaEletronicoBeans {
 	@Override
 	protected List<ContaCorrente> carregarContas() {
 		final List<ContaCorrente> cc = new LinkedList<ContaCorrente>();
-		cc.add(new ContaCorrente("12345-0", 0.0));		
+		cc.add(new ContaCorrente("12345-0", 0.0));
+		cc.add(new ContaCorrente("67890-0", 0.0));
 		return cc;
 	}
 

@@ -3,7 +3,6 @@ package br.com.hyperclass.caixaeletronico.restapi.serializer;
 import java.io.IOException;
 
 import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
@@ -14,11 +13,11 @@ import br.com.hyperclass.caixaeletronico.restapi.wrapper.ValorWrapper;
 public class ValorDeserializer extends JsonDeserializer<ValorWrapper> {
 
 	@Override
-	public ValorWrapper deserialize(JsonParser jsonParser, DeserializationContext context)
-			throws IOException, JsonProcessingException {
+	public ValorWrapper deserialize(final JsonParser jsonParser, final DeserializationContext context)
+			throws IOException {
 		
-		ObjectCodec oc = jsonParser.getCodec();
-        JsonNode node = oc.readTree(jsonParser);
+		final ObjectCodec oc = jsonParser.getCodec();
+        final JsonNode node = oc.readTree(jsonParser);
         
         return new ValorWrapper(node.get("valor").asDouble());
         
